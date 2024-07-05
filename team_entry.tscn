@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=3 uid="uid://b00p15iscd1yg"]
+
+[ext_resource type="Script" path="res://team_entry.gd" id="1_500t2"]
+
+[node name="TeamEntry" type="ColorRect"]
+custom_minimum_size = Vector2(200, 70)
+offset_right = 225.0
+offset_bottom = 70.0
+mouse_default_cursor_shape = 2
+color = Color(0, 0, 0, 0)
+script = ExtResource("1_500t2")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Thumb" type="TextureRect" parent="HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Name" type="Label" parent="HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 70)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+vertical_alignment = 1
+autowrap_mode = 3
+clip_text = true
+text_overrun_behavior = 3
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

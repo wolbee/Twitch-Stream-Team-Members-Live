@@ -1,0 +1,67 @@
+[gd_scene load_steps=3 format=3 uid="uid://f6tbie6hxtja"]
+
+[ext_resource type="Script" path="res://team_member_entry.gd" id="1_o2w2c"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_whadm"]
+bg_color = Color(1, 0, 0, 1)
+corner_radius_top_left = 45
+corner_radius_top_right = 45
+corner_radius_bottom_right = 45
+corner_radius_bottom_left = 45
+
+[node name="ColorRect" type="ColorRect"]
+custom_minimum_size = Vector2(450, 70)
+offset_right = 450.0
+offset_bottom = 70.0
+size_flags_horizontal = 3
+mouse_default_cursor_shape = 2
+color = Color(0, 0, 0, 0)
+script = ExtResource("1_o2w2c")
+
+[node name="TeamMemberEntry" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(450, 70)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="PFP" type="TextureRect" parent="TeamMemberEntry"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 4
+
+[node name="DisplayName" type="Label" parent="TeamMemberEntry"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 1
+theme_override_font_sizes/font_size = 20
+
+[node name="LiveLamp" type="Panel" parent="TeamMemberEntry"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_whadm")
+
+[node name="ViewCount" type="Label" parent="TeamMemberEntry"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+mouse_filter = 1
+theme_override_font_sizes/font_size = 20
+
+[node name="Control" type="Control" parent="TeamMemberEntry"]
+custom_minimum_size = Vector2(1, 0)
+layout_mode = 2
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

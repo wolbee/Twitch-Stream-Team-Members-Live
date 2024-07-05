@@ -1,0 +1,37 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Stream Team Members Live"
+config/description="A small program to show which members of a Twitch stream team are live."
+config/version="0.1.0"
+run/main_scene="res://base.tscn"
+config/features=PackedStringArray("4.2", "Forward Plus")
+config/icon="res://icon.svg"
+
+[autoload]
+
+HttpClientManager="*res://addons/twitcher/communication/http_client_manager.gd"
+
+[display]
+
+window/size/viewport_width=502
+window/size/resizable=false
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/twitcher/plugin.cfg")
+
+[twitch]
+
+auth/authorization_flow="DeviceCodeGrantFlow"
+auth/client_id="o12ifl11p9siy8krty43d2p23p7mdc"
+auth/scopes/user=0
