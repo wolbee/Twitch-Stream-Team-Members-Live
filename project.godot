@@ -12,7 +12,11 @@ config_version=5
 
 config/name="Stream Team Members Live"
 config/description="A small program to show which members of a Twitch stream team are live."
+<<<<<<< Updated upstream
 config/version="0.1.1"
+=======
+config/version="0.1.2"
+>>>>>>> Stashed changes
 run/main_scene="res://base.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
@@ -32,6 +36,6 @@ enabled=PackedStringArray("res://addons/twitcher/plugin.cfg")
 
 [twitch]
 
-auth/authorization_flow="DeviceCodeGrantFlow"
+auth/authorization_flow="ImplicitGrantFlow"
 auth/client_id="o12ifl11p9siy8krty43d2p23p7mdc"
 auth/scopes/user=0

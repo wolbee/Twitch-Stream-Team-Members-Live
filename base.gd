@@ -7,18 +7,9 @@ var broadcaster
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	TwitchService.auth.initialized.connect(_handle_init)
 	await TwitchService.setup()
 	print("Connected to Twitch")
 	populate_teams()
-
-
-func _handle_init():
-	TwitchService.auth.auth.device_code_requested.connect(_handle_code)
-
-
-func _handle_code(device_code : OAuth.OAuthDeviceCodeResponse):
-	OS.shell_open(device_code.verification_uri)
 
 
 func populate_teams():
