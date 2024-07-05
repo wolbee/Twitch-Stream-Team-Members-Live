@@ -3,6 +3,8 @@ extends Control
 @export var teamEntry: PackedScene
 @export var memberEntry: PackedScene
 
+var broadcaster
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	TwitchService.auth.initialized.connect(_handle_init)
@@ -22,7 +24,7 @@ func _handle_code(device_code : OAuth.OAuthDeviceCodeResponse):
 func populate_teams():
 	for child in %TeamList.get_children():
 		child.queue_free()
-	var broadcaster = await TwitchService.api.get_users([],[])
+	broadcaster = await TwitchService.api.get_users([],[])
 	var teams = await TwitchService.api.get_channel_teams(str(broadcaster.data[0].id))
 	for team in teams.data.map(func(team): return {"name": team.team_name, "disp": team.team_display_name, "url": team.thumbnail_url}):
 		var entry = teamEntry.instantiate()
@@ -46,6 +48,7 @@ func populate_team_members(team : String):
 	if response.data.size() == 0:
 		return
 	var users = Array(response.data[0].users.map(func(user): return user.user_name), TYPE_STRING, &"", null)
+	users.erase(broadcaster.data[0].display_name)
 	var liveCheck = await TwitchService.api.get_streams([],users,[],"live",[],100,"","")
 	
 	# sort liveCheck by viewer count
